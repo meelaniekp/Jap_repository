@@ -23,11 +23,11 @@ function showStars(score){
     let estrella= "";
 
     if(score == 1){
-            estrella=`<span class="fa fa-star checked"></span>
-            <span class="fa fa-star "></span>
-            <span class="fa fa-star "></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>`
+        estrella=`<span class="fa fa-star checked"></span>
+         <span class="fa fa-star "></span>
+         <span class="fa fa-star "></span>
+         <span class="fa fa-star"></span>
+         <span class="fa fa-star"></span>`
                    
     }else if(score == 2) {
         estrella=`<span class="fa fa-star checked"></span>
@@ -111,7 +111,24 @@ document.addEventListener("DOMContentLoaded", function(e){
         };
     
   });
-  
+   document.getElementById("formulario").addEventListener("submit", function(e){
+    e.preventDefault()//evita que se refresque la pagina
+    addComment(e)
+   }) 
 });
 
-
+function addComment(e){
+   var usuario = localStorage.getItem("Nombre")
+   var score = document.getElementById("puntaje").value
+   var comment = document.getElementById("comentarioNuevo").value
+   var fecha = new Date ()
+   let htmlContentToAppend = "";
+   var div = document.createElement("div")
+   htmlContentToAppend += `
+   <div class="row gx-5">
+      <p>`+showStars(score) +`<br> <b>`+ usuario + ` -</b> `+ fecha+ `<br>` + comment +`<br></p>
+   </div>
+   `
+    div.innerHTML = htmlContentToAppend
+    document.getElementById("comentarios").appendChild(div)
+}

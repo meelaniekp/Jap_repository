@@ -13,6 +13,7 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <script src="js/redirect.js"></script>
 </head>
 
 <body>
@@ -61,15 +62,17 @@
         <div id="comentarios" class="container align-items-center "></div>
       </dd>
       <dt><hr> Agregar comentario  </dt>   
-      <form>
+      <form id="formulario">
         <br>
         <textarea id="comentarioNuevo" rows="4" class="form-control" placeholder="Ingrese su comentario"></textarea>
-        <input type="radio" name="puntaje" value="1" />1 
-        <input type="radio" name="puntaje" value="2" />2
-        <input type="radio" name="puntaje" value="3" />3
-        <input type="radio" name="puntaje" value="4" />4
-        <input type="radio" name="puntaje" value="5" />5<br>
-        <button class="btn btn-light btn-lg" type="button">Enviar comentario</button>
+        <select id="puntaje">
+          <option value="1">1</option> 
+          <option value="2">2</option> 
+          <option value="3">3</option> 
+          <option value="4">4</option> 
+          <option value="5">5</option> 
+        </select><br>
+        <button class="btn btn-light btn-lg" type="submit">Enviar comentario</button>
       </form>
   
     </dl>

@@ -11,3 +11,8 @@ function guardarNombre(){
    localStorage.setItem("Nombre", email)
   
 }
+$("#cierre").click(function(){
+   $(location).attr('href','index.html');
+   localStorage.clear();
+   
+  })

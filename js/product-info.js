@@ -3,17 +3,31 @@ var category = {};
 function showImagesGallery(array){
 
     let htmlContentToAppend = "";
-
+    
     for(let i = 0; i < array.length; i++){
         let imageSrc = array[i];
-
-        htmlContentToAppend += `
-        <div class="col-lg-3 col-md-4 col-6">
-            <div class="d-block mb-4 h-100">
-                <img class="img-fluid img-thumbnail" src="` + imageSrc + `" alt="">
+        if (i == 0) {
+            htmlContentToAppend += `
+                           
+            <div class="carousel-item active">
+            <img class="d-block w-100" src="${imageSrc}">
+        
             </div>
+            `
+            continue;
+
+        } else {         
+            htmlContentToAppend += `
+        
+        <div class="carousel-item">
+        <img class="d-block w-100" src="${imageSrc}">
+        
+        
         </div>
         `
+
+        }
+   
 
         document.getElementById("productImagesGallery").innerHTML = htmlContentToAppend;
     }
@@ -87,6 +101,7 @@ document.addEventListener("DOMContentLoaded", function(e){
             //Muestro las imagenes en forma de galería
             showImagesGallery(category.images);
         }
+        
     });
     function showComments(array){
         let htmlContentToAppend = "";
@@ -132,3 +147,45 @@ function addComment(e){
     div.innerHTML = htmlContentToAppend
     document.getElementById("comentarios").appendChild(div)
 }
+
+document.addEventListener("DOMContentLoaded", function(e){
+
+    getJSONData(PRODUCTS_URL).then(function(resultObj1){
+        if (resultObj1.status === "ok"){
+            products = resultObj1.data;
+            showRelatedProducts(products)
+    
+        };
+    });
+
+    function showRelatedProducts(array){
+        
+        let htmlContentToAppend = "";
+    
+        for(let i = 0; i < category.relatedProducts.length; i++){
+
+            let relatedProducts = array[category.relatedProducts[i]];
+    
+            htmlContentToAppend += `
+            <div class="col">
+        <div class="card" style="width: 18rem;">
+          <img src=`+relatedProducts.imgSrc+` class="card-img-top" alt="producto">
+          <div class="card-body">
+            <h5 class="card-title">`+relatedProducts.name+`</h5>
+            <p class="card-text">`+relatedProducts.description+`</p>
+            <a href="products.html" class="btn btn-outline-info">Ver Producto</a>
+          </div>
+        </div>
+      </div>
+            
+            `
+    
+            document.getElementById("relacionados").innerHTML = htmlContentToAppend;
+        }
+       
+     }
+});
+
+
+
+        

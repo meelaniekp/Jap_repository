@@ -54,7 +54,8 @@ footer p {
   margin-bottom: .25rem;
 }
 .btn-light{
-background-color: rgb(6, 144, 114);
+background:linear-gradient(rgb(0, 92, 128), rgb(12, 131, 95))
+
 }
 .site-header a {
   color: white;

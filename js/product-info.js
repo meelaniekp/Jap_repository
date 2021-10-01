@@ -14,8 +14,6 @@ function showImagesGallery(array){
         
             </div>
             `
-            continue;
-
         } else {         
             htmlContentToAppend += `
         

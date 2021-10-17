@@ -69,6 +69,24 @@
                     </tbody>  
                    
                 </table>
+                <h5 class="mb-3">Tipo de envío</h5>
+              
+                <div class="d-block my-3">
+                <div class="custom-control custom-radio">
+                  <input id="premiumradio" name="tipodeenvio" type="radio" class="custom-control-input"  required="" checked>
+                  <label class="custom-control-label" for="premiumradio">Premium - de 2 a 5 días (15%)</label>
+                </div>
+                <div class="custom-control custom-radio">
+                  <input id="expressradio" name="tipodeenvio" type="radio" class="custom-control-input" required="">
+                  <label class="custom-control-label" for="expressradio">Express - de 5 a 8 días (7%)</label>
+                </div>
+                <div class="custom-control custom-radio">
+                  <input id="standardradio" name="tipodeenvio" type="radio" class="custom-control-input" required="">
+                  <label class="custom-control-label" for="standardradio">Estándar - de 12 a 15 días (5%)</label>
+                </div>
+                
+              </div>
+
                 <button class="btn btn-info btn-block btn-lg ml-2 pay-button" onclick="sumar()" id="total" type="button">Total en pesos: </button>
                 
               </div>

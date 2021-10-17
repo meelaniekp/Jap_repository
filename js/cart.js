@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function(e){
                 total+= subtotal
                 htmlContentToAppend += `
             <tr><td><img src=${articles.src} class="img-fluid img-thumbnail imagen"></td><td>${articles.name}</td>
-            <td> <input type="number" onchange="sumar()" value="${articles.count}"></td><td>UYU</td><td class="precio">${subtotal}</td></tr>
+            <td> <input type="number" onchange="sumar()" min="1" value="${articles.count}"></td><td>UYU</td><td class="precio">${subtotal}</td></tr>
             
             `
             } else{
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function(e){
                 total+= subtotal
                 htmlContentToAppend += `
             <tr><td><img src=${articles.src} class="img-fluid img-thumbnail imagen"></td><td>${articles.name}</td>
-            <td> <input type="number" onchange="sumar()" value="${articles.count}"></td><td>${articles.currency}</td><td class="precio">${articles.unitCost}</td></tr>
+            <td> <input type="number" onchange="sumar()" min="1" value="${articles.count}"></td><td>${articles.currency}</td><td class="precio">${articles.unitCost}</td></tr>
             
             `
             }

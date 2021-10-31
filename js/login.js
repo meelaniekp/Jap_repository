@@ -11,6 +11,10 @@ function guardarNombre(){
    localStorage.setItem("Nombre", email)
   
 }
+function irARegistro(){
+   window.location.href= "registro.html";
+    
+  }
 $("#cierre").click(function(){
    $(location).attr('href','index.html');
    localStorage.clear();

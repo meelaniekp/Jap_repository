@@ -51,9 +51,7 @@
       </div>>
     </div>
   </nav>
-  <div class="row">
-    
-      
+  <div class="row card">
     <div class="container mt-5 mb-5">
       <div class="d-flex justify-content-center row">
           <div class="col-md-8 container">
@@ -73,32 +71,95 @@
               
                 <div class="d-block my-3">
                 <div class="custom-control custom-radio">
-                  <input id="premiumradio" name="tipodeenvio" type="radio" class="custom-control-input"  required="" checked>
+                  <input id="premiumradio" name="tipodeenvio" type="radio" class="custom-control-input"  required="" checked onclick="envio()">
                   <label class="custom-control-label" for="premiumradio">Premium - de 2 a 5 días (15%)</label>
                 </div>
                 <div class="custom-control custom-radio">
-                  <input id="expressradio" name="tipodeenvio" type="radio" class="custom-control-input" required="">
+                  <input id="expressradio" name="tipodeenvio" type="radio" class="custom-control-input" required="" onclick="envio()">
                   <label class="custom-control-label" for="expressradio">Express - de 5 a 8 días (7%)</label>
                 </div>
-                <div class="custom-control custom-radio">
-                  <input id="standardradio" name="tipodeenvio" type="radio" class="custom-control-input" required="">
+                 <div class="custom-control custom-radio">
+                  <input id="standardradio" name="tipodeenvio" type="radio" class="custom-control-input" required="" onclick="envio()">
                   <label class="custom-control-label" for="standardradio">Estándar - de 12 a 15 días (5%)</label>
-                </div>
+                 </div>
                 
-              </div>
-
-                <button class="btn btn-info btn-block btn-lg ml-2 pay-button" onclick="sumar()" id="total" type="button">Total en pesos: </button>
-                
+                  </div>
+                 <h5 class="" id="subtotal" type="button">Subtotal en pesos: </h5>
+                 <h5 class="" id="total" type="button">Total en pesos: </h5>
+                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                  Medio de pago
+                 </button>
               </div>
               
           </div>
          
       </div>
   </div>
+  <!-- Button trigger modal -->
 
 
-
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Medio de pago</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
+      <div class="modal-body">
+        <div class="custom-control custom-radio mt-3">
+          <input type="radio"  onclick="metodoenvio()" id="customRadio1" name="customRadio" class="custom-control-input" data-toggle="collapse" href="#tarjetadecredito" role="button">
+          <label class="custom-control-label" for="customRadio1">Tarjeta de credito</label>
+        </div>
+        <div class="collapse" id="tarjetadecredito">
+          <div class="row mt-3">
+        <div class="col-md-6"> <label for="modalnombreReg">Nombre titular</label> 
+          <input type="text" id="modalnombreReg" class="bg-light form-control" placeholder="Ingrese su nombre"> 
+        </div>
+        <div class="col-md-6"> <label for="modalnombreReg">Numero de tarjeta</label> 
+          <input type="text" id="modalnombreReg" class="bg-light form-control" placeholder="Ingrese numero de tarjeta"> 
+        </div>
+        <div class="col-md-6"> <label for="modalnombreReg">Vencimiento</label> 
+          <input type="month" id="modalnombreReg" class="bg-light form-control"> 
+        </div>
+        <div class="col-md-4"> <label for="modalnombreReg">CVV</label> 
+          <input type="text" id="modalnombreReg" class="bg-light form-control" placeholder="CVV"> 
+        </div>
+        </div>
+        </div>
+        
+        <div class="custom-control custom-radio mt-3">
+          <input type="radio" onclick="metodoenvio()" id="customRadio2" name="customRadio" class="custom-control-input" data-toggle="collapse" href="#transferenciaBancaria" role="button">
+          <label class="custom-control-label" for="customRadio2">Transferencia Bancaria</label>
+        </div>
+
+        <div class="collapse" id="transferenciaBancaria">
+          <div class="row mt-3">
+            <div class="col-6">
+              <label for="productName">Número de Cuenta</label>
+              <input type="text" class="form-control" id="productName" placeholder="Cuenta bancaria" value="">
+              <label for="productName">Banco</label>
+              <input type="text" class="form-control" id="productName1" placeholder="Banco" value="">
+              <div class="invalid-feedback">
+                Ingrese un número de cuenta
+              </div>
+            </div>
+          </div>
+        </div>
+       <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+       </div>
+    </div>
+    </div>
+  </div>
+</div>
+    
+  
+
+      
   <div id="spinner-wrapper">
     <div class="lds-ring">
     </div>

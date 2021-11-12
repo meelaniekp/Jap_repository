@@ -1,6 +1,8 @@
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
+let costoEnvio = 1.15;
+
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(CART_INFO2_URL).then(function(resultObj){
         if (resultObj.status === "ok"){
@@ -9,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function(e){
         }
     });
     let articles=[];
+    
 
     function BuyProducts(array){
         let total=0;
@@ -38,7 +41,8 @@ document.addEventListener("DOMContentLoaded", function(e){
             
         } 
         document.getElementById("articulos").innerHTML = htmlContentToAppend;
-        document.getElementById("total").innerHTML += total;
+        document.getElementById("subtotal").innerHTML += total;
+        document.getElementById("total").innerHTML = `Total en pesos: ${subtotal*costoEnvio}`;
      }
 
     
@@ -56,7 +60,30 @@ function sumar(){
             
     }
     
-    document.getElementById("total").innerHTML = `Total en pesos: ${subtotal}`;
-    BuyProducts(articulos)
+    document.getElementById("subtotal").innerHTML = `Subtotal en pesos: ${subtotal}`;
+    document.getElementById("total").innerHTML = `Total en pesos: ${subtotal*costoEnvio}`;
     
 }
+
+
+function envio(){
+    let premium = document.getElementById("premiumradio");
+    let express = document.getElementById("expressradio");
+    let standard = document.getElementById("standardradio");
+
+    if (premium.checked == true) {
+        costoEnvio = 1.15;
+        sumar();
+    } 
+
+    if (express.checked == true) {
+        costoEnvio = 1.07;
+        sumar();
+    }
+    if (standard.checked == true) {
+        costoEnvio = 1.05;
+        sumar();
+    }  
+
+}
+

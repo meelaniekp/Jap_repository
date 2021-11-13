@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <title>eMercado - Todo lo que busques está aquí</title>
-
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   
@@ -54,49 +54,66 @@
   <div class="row card">
     <div class="container mt-5 mb-5">
       <div class="d-flex justify-content-center row">
-          <div class="col-md-8 container">
-              <div class="p-2">
-                  <h2>Mi carrito</h2>
-                  <div class="d-flex flex-row align-items-center pull-right"><h3 class="mr-1">Articulos seleccionados:</h3><i class="fa fa-angle-down"></i></div>
+          <div class="col-md-12 container">
+              <div class="heading" >
+                  <h2 >Mi carrito</h2>
               </div>
               
-                <table class="container">
-                    <thead><tr><th>Articulo</th><th>Descripción</th><th>Cantidad</th><th>Moneda</th><th>Precio</th></tr></thead>
+                <table class="col-md-12 summary container">
+                    <thead><tr><th class="border-0 bg-light">Articulo</th><th class="border-0 bg-light">Descripción</th><th class="border-0 bg-light">Cantidad</th><th class="border-0 bg-light">Moneda</th><th class="border-0 bg-light">Precio</th></tr></thead>
                     <tbody id="articulos">
                         
                     </tbody>  
                    
                 </table>
-                <h5 class="mb-3">Tipo de envío</h5>
-              
-                <div class="d-block my-3">
+                
+                <h5 class="mb-3 border-0 bg-light" ><b>Datos de envio</b></h5>
+                <form class="was-validated">
+                  <div class="row mt-3">
+                  <div class="col-md-6"> <label for="nombreReg">Calle</label> 
+                    <input type="text" id="direccionReg" class="bg-light form-control" required placeholder="Ingrese su nombre"> 
+                  </div>
+                  <div class="col-md-6"> <label for="apellidoReg">Numero</label> 
+                    <input type="text" id="numeroReg" class="bg-light form-control"required placeholder="Ingrese numero de tarjeta"> 
+                  </div>
+                  <div class="col-md-6"> <label for="direccionReg">Pais</label> 
+                    <input type="text" id="paisReg" class="bg-light form-control" required> 
+                  </div>
+                </form>
+
+              <div class="d-block my-3 col-md-10 summary container">
+                
                 <div class="custom-control custom-radio">
-                  <input id="premiumradio" name="tipodeenvio" type="radio" class="custom-control-input"  required="" checked onclick="envio()">
+                  <input id="premiumradio" name="tipodeenvio" type="radio" class="custom-control-input"   checked onclick="envio()">
                   <label class="custom-control-label" for="premiumradio">Premium - de 2 a 5 días (15%)</label>
                 </div>
                 <div class="custom-control custom-radio">
-                  <input id="expressradio" name="tipodeenvio" type="radio" class="custom-control-input" required="" onclick="envio()">
+                  <input id="expressradio" name="tipodeenvio" type="radio" class="custom-control-input"  onclick="envio()">
                   <label class="custom-control-label" for="expressradio">Express - de 5 a 8 días (7%)</label>
                 </div>
                  <div class="custom-control custom-radio">
-                  <input id="standardradio" name="tipodeenvio" type="radio" class="custom-control-input" required="" onclick="envio()">
+                  <input id="standardradio" name="tipodeenvio" type="radio" class="custom-control-input"  onclick="envio()">
                   <label class="custom-control-label" for="standardradio">Estándar - de 12 a 15 días (5%)</label>
                  </div>
-                
-                  </div>
-                 <h5 class="" id="subtotal" type="button">Subtotal en pesos: </h5>
-                 <h5 class="" id="total" type="button">Total en pesos: </h5>
-                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                  Medio de pago
-                 </button>
-              </div>
-              
+               </div>
+
+                 <div class="totalescontainer">
+                  <h5 class="" id="subtotal" type="button">Subtotal en pesos: </h5><br>
+                  <h5 class="" id="total" type="button">Total en pesos: </h5><br>
+                 </div>
+               
+             
+             </div>
+             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+              Medio de pago
+             </button>
+             <button type="button" onclick="finalizarCompra()" class="btn btn-primary">
+              Finalizar compra
+             </button>
           </div>
          
       </div>
   </div>
-  <!-- Button trigger modal -->
-
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -109,48 +126,50 @@
         </button>
       </div>
       <div class="modal-body">
-        <div class="custom-control custom-radio mt-3">
-          <input type="radio"  onclick="metodoenvio()" id="customRadio1" name="customRadio" class="custom-control-input" data-toggle="collapse" href="#tarjetadecredito" role="button">
-          <label class="custom-control-label" for="customRadio1">Tarjeta de credito</label>
-        </div>
-        <div class="collapse" id="tarjetadecredito">
-          <div class="row mt-3">
-        <div class="col-md-6"> <label for="modalnombreReg">Nombre titular</label> 
-          <input type="text" id="modalnombreReg" class="bg-light form-control" placeholder="Ingrese su nombre"> 
-        </div>
-        <div class="col-md-6"> <label for="modalnombreReg">Numero de tarjeta</label> 
-          <input type="text" id="modalnombreReg" class="bg-light form-control" placeholder="Ingrese numero de tarjeta"> 
-        </div>
-        <div class="col-md-6"> <label for="modalnombreReg">Vencimiento</label> 
-          <input type="month" id="modalnombreReg" class="bg-light form-control"> 
-        </div>
-        <div class="col-md-4"> <label for="modalnombreReg">CVV</label> 
-          <input type="text" id="modalnombreReg" class="bg-light form-control" placeholder="CVV"> 
-        </div>
-        </div>
-        </div>
-        
-        <div class="custom-control custom-radio mt-3">
-          <input type="radio" onclick="metodoenvio()" id="customRadio2" name="customRadio" class="custom-control-input" data-toggle="collapse" href="#transferenciaBancaria" role="button">
-          <label class="custom-control-label" for="customRadio2">Transferencia Bancaria</label>
-        </div>
-
-        <div class="collapse" id="transferenciaBancaria">
-          <div class="row mt-3">
-            <div class="col-6">
-              <label for="productName">Número de Cuenta</label>
-              <input type="text" class="form-control" id="productName" placeholder="Cuenta bancaria" value="">
-              <label for="productName">Banco</label>
-              <input type="text" class="form-control" id="productName1" placeholder="Banco" value="">
-              <div class="invalid-feedback">
-                Ingrese un número de cuenta
+        <form class="was-validated">
+          <div class="custom-control custom-radio mt-3">
+            <input type="radio"  id="customRadio1" name="customRadio" class="custom-control-input" data-toggle="collapse" href="#tarjetadecredito" role="button">
+            <label class="custom-control-label" for="customRadio1">Tarjeta de credito</label>
+          </div>
+          
+            <div class="row mt-3">
+          <div class="col-md-6"> <label for="modalnombreReg">Nombre titular</label> 
+            <input type="text" id="modalnombreTitular" class="bg-light form-control" required placeholder="Ingrese su nombre"> 
+          </div>
+          <div class="col-md-6"> <label for="modalnombreReg">Numero de tarjeta</label> 
+            <input type="text" id="modalnombreNumero" class="bg-light form-control"required placeholder="Ingrese numero de tarjeta"> 
+          </div>
+          <div class="col-md-6"> <label for="modalnombreReg">Vencimiento</label> 
+            <input type="month" id="modalnombreVto" class="bg-light form-control" required> 
+          </div>
+          <div class="col-md-4"> <label for="modalnombreReg">CVV</label> 
+            <input type="text" id="modalnombreCvv" class="bg-light form-control" placeholder="CVV" required> 
+          </div>
+          </div>
+          
+          <div class="custom-control custom-radio mt-3">
+            <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input" data-toggle="collapse" href="#transferenciaBancaria" role="button">
+            <label class="custom-control-label" for="customRadio2">Transferencia Bancaria</label>
+          </div>
+  
+          
+            <div class="row mt-3">
+              <div class="col-6">
+                <label for="numeroCu">Número de Cuenta</label>
+                <input type="text" class="form-control" required id="numeroCuenta" placeholder="Cuenta bancaria" value="">
+                <label for="productName">Banco</label>
+                <input type="text" class="form-control"required id="banco" placeholder="Banco">
+                <div class="invalid-feedback">
+                  Ingrese un número de cuenta
+                </div>
               </div>
             </div>
-          </div>
-        </div>
+        </form>
+        
+        
        <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
        </div>
     </div>
     </div>
